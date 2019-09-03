@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>{{ 'Autores'|upper }} </h1>
+<p>[{{ object.sobrenome|upper }}] {{ object.nome }}</p>
+<p>{{ object.email }}</p>
+<p>{{ object.formacao }}</p>
+{% endblock conteudo %}

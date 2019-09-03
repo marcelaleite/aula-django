@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>Autores</h1>
+<ul>
+  {% for item in object %}
+    <li><b><a href='{{ item.get_absolute_url }}'>{{ item.nome }}</a></b> - {{ item.sobrenome|upper }} - <a href='{{ item.id }}/update/'>Alterar</a></li>
+  {% endfor %}
+</ul>
+{% endblock conteudo %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>{{ 'Projeto feiras de matemática'|upper }} </h1>
+<p>Olá {{ nome }}</p>
+<h2>Lista de Trilhas</h2>
+<ul>
+  {% for item in trilhas %}
+    <li>{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endblock conteudo %}
