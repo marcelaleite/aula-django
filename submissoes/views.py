@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 
 from django.http import HttpResponse
 from .models import Submissao,Autor
@@ -55,6 +55,15 @@ def autor_update_view(request, pid):
     }
     return render(request,'autor/create_view.html',contexto)
 
+def submissoes_update_view(request, pid):
+    obj = get_object_or_404(Submissao,id=pid)
+    form  = SubmissaoForm(request.POST or None,instance=obj)
+    if form.is_valid():
+        form.save()
+    contexto = {
+        'form': form
+    }
+    return render(request,'submissoes/create_view.html',contexto)
 
 def submissao_create_view(request):
     form  = SubmissaoForm(request.POST or None)
@@ -65,3 +74,13 @@ def submissao_create_view(request):
         'form': form
     }
     return render(request,'submissoes/create_view.html',contexto)
+
+def submissao_delete_view(request,pid):
+    obj = get_object_or_404(Submissao,id=pid)
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('../../')
+    contexto = {
+        'object': obj
+    }
+    return render(request,'submissoes/delete_view.html',contexto)

@@ -2,12 +2,14 @@ from django import forms
 from .models import Autor,Submissao
 
 class AutorForm(forms.ModelForm):
+    formacao = forms.CharField(label='Formação Acadêmica',required=False, widget=forms.Textarea(attrs={'placeholder':'Informe sua formação acadêmica...','id':'formacao','class':'campos','rows':5}))
     class Meta:
          model = Autor
          fields = [
          'nome',
          'sobrenome',
-         'email'
+         'email',
+         'formacao'
          ]
     def clean_nome(self, *args, **kwargs):
         nome = self.cleaned_data.get('nome')

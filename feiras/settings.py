@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'submissoes',
     'home',
+    'qr_code',
 ]
 
 MIDDLEWARE = [

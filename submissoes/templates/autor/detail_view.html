@@ -5,4 +5,8 @@
 <p>[{{ object.sobrenome|upper }}] {{ object.nome }}</p>
 <p>{{ object.email }}</p>
 <p>{{ object.formacao }}</p>
+
+{% load qr_code %}
+{% qr_from_text "Hello World!" size="T" %}
+
 {% endblock conteudo %}
