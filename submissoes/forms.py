@@ -35,6 +35,6 @@ class SubmissaoForm(forms.ModelForm):
         'resumo',
         'autores',
         'aprovado',
-        'submetido_por',
+        #'submetido_por',
         'arquivo'
         ]

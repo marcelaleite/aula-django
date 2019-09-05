@@ -2,7 +2,9 @@
 
 {% block conteudo %}
 <h1>{{ 'Submissão'|upper }} </h1>
-<h2>{{ object.titulo }}</h2>
-<p>{{ object.resumo }}</p>
+<p>{{MEDIA_URL}}</p>
 <p>{{ object.arquivo }}</p>
+<h2><a href='{{MEDIA_URL}}{{ object.arquivo }}' target='_blank'>{{ object.titulo }}</a></h2>
+<p>{{ object.resumo }}</p>
+<p>{{ object.submetido_por }}</p>
 {% endblock conteudo %}

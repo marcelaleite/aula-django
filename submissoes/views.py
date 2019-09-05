@@ -66,10 +66,13 @@ def submissoes_update_view(request, pid):
     return render(request,'submissoes/create_view.html',contexto)
 
 def submissao_create_view(request):
-    form  = SubmissaoForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = SubmissaoForm()
+    if request.method == 'POST':
+        form  = SubmissaoForm(request.POST, request.FILES or None,initial={'submetido_por': request.user})
+        if form.is_valid():
+            fn = form.save(commit=False)
+            fn.submetido_por = request.user
+            fn.save()
+    form = SubmissaoForm()
     contexto = {
         'form': form
     }
