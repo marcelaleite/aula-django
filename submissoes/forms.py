@@ -23,7 +23,7 @@ class AutorFormManual(forms.Form):
 
     def clean_nome(self, *args, **kwargs):
         nome = self.cleaned_data.get('nome')
-        if not 'de' in nome:
+        if not 'de ' in nome:
             raise forms.ValidationError('Nome não compatível com o padrão')
         return nome
 
