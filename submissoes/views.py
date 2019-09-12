@@ -67,11 +67,14 @@ def submissoes_update_view(request, pid):
 
 def submissao_create_view(request):
     if request.method == 'POST':
-        form  = SubmissaoForm(request.POST, request.FILES or None,initial={'submetido_por': request.user})
-        if form.is_valid():
-            fn = form.save(commit=False)
-            fn.submetido_por = request.user
-            fn.save()
+        if request.user.is_authenticated:
+            form  = SubmissaoForm(request.POST, request.FILES or None,initial={'submetido_por': request.user})
+            if form.is_valid():
+                fn = form.save(commit=False)
+                fn.submetido_por = request.user
+                fn.save()
+        else:
+            redirect('../../')
     form = SubmissaoForm()
     contexto = {
         'form': form

@@ -10,6 +10,9 @@ class Autor(models.Model):
     formacao = models.CharField(max_length=100,null=True,blank=True)
     def get_absolute_url(self):
         return reverse('autor-detail',kwargs={'pid':self.id})
+    def __str__(self):
+        nome = '[' + self.sobrenome + '] ' + self.nome
+        return nome
 
 class Submissao(models.Model):
     titulo = models.CharField(max_length=150)
@@ -23,6 +26,3 @@ class Submissao(models.Model):
     def get_absolute_url(self):
         # return '{self.id}/'
         return reverse('submissoes-detail',kwargs={'pid':self.id})
-
-    def __unicode__(self):
-        return self.autores

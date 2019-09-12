@@ -28,6 +28,7 @@ class AutorFormManual(forms.Form):
         return nome
 
 class SubmissaoForm(forms.ModelForm):
+    autores = forms.ModelMultipleChoiceField(queryset=Autor.objects.all().order_by('sobrenome'))
     class Meta:
         model = Submissao
         fields = [

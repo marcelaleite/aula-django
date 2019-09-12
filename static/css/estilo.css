@@ -1,0 +1,27 @@
+h1{
+  color: rgb(194, 26, 26);
+  background-color: yellow;
+  font-family: monospace;
+}
+
+p{
+  font-family: cursive;
+  font-weight: bold;
+  color: black;
+}
+
+.destaque{
+  color: #ff0000;
+}
+
+.high{
+  background-color: #ffff00;
+}
+
+#nomeArquivo{
+  font-style: italic;
+}
+
+nav{
+  background-color: #00BCD4;
+}
