@@ -6,6 +6,6 @@
 <p>{{ object.resumo }}</p>
 <p>{{ object.arquivo }}</p>
 <form  method="POST">{% csrf_token %}
-<input type="submit" value="Excluir">
+<input type="submit" value="Excluir"><a href="../">Cancelar</a>
 </form>
 {% endblock conteudo %}
