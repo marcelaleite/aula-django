@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>{{ 'Submissoes Enviadas'|upper }} </h1>
+<ul>
+  {% for item in object_list %}
+    <li><b><a href='{{ item.get_absolute_url }}'>{{ item.titulo }}</a></b> - {{ item.data }} - <a href='{{ item.id }}/update/'>Alterar</a>| <a href='{{ item.id }}/delete/'>Excluir</a></li>
+  {% endfor %}
+</ul>
+{% endblock conteudo %}

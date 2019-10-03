@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<h1>{{ 'Submissão'|upper }} </h1>
+<p>{{MEDIA_URL}}</p>
+<spam class='destaque high'>Algum texto</spam>
+<p id='nomeArquivo'>Arquivo: {{ object.arquivo }}</p>
+<h2><a href='{{MEDIA_URL}}{{ object.arquivo }}' target='_blank'>{{ object.titulo }}</a></h2>
+<p>{{ object.resumo }}</p>
+<p class='destaque'>{{ object.submetido_por }}</p>
+{% endblock conteudo %}

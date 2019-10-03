@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Submissao,Autor
 from .forms import AutorForm,AutorFormManual, SubmissaoForm
+from django.views.generic import ListView, DetailView, CreateView
 
 def submissoes_list_view(request):
     obj = Submissao.objects.all()
@@ -10,6 +11,29 @@ def submissoes_list_view(request):
         'object': obj
     }
     return render(request,'submissoes/list_view.html',contexto)
+
+class SubmissoesListView(ListView):
+    template_name = 'submissoes/class_list.html'
+    queryset = Submissao.objects.all() #Submissao_list.html
+
+class SubmissoesDetailView(DetailView):
+    template_name = 'submissoes/class_detail.html'
+    queryset = Submissao.objects.all() #Submissao_list.html
+
+
+class SubmissoesCreateView(CreateView):
+    template_name = 'submissoes/create_view.html'
+    form_class = SubmissaoForm
+    queryset = Submissao.objects.all()
+
+    def form_valid(self,form):
+        form.instance.submetido_por = self.request.user
+        return super().form_valid(form)
+
+
+class AutorListView(ListView):
+    template_name = 'autor/list_view.html'
+    queryset = Autor.objects.all()
 
 def autor_list_view(request):
     obj = Autor.objects.all()
@@ -61,7 +85,7 @@ def submissoes_update_view(request, pid):
     if form.is_valid():
         form.save()
     contexto = {
-        'form': formn 
+        'form': formn
     }
     return render(request,'submissoes/create_view.html',contexto)
 

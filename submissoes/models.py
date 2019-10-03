@@ -25,4 +25,4 @@ class Submissao(models.Model):
 
     def get_absolute_url(self):
         # return '{self.id}/'
-        return reverse('submissoes:submissoes-detail',kwargs={'pid':self.id})
+        return reverse('submissoes:submissoes-detail-class',kwargs={'pk':self.id})
